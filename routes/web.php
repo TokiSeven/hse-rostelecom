@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('upload/fix-data', function () {
+    return view('fix-data');
+});
+
+Route::post('fix-xls', 'Xls@fix');
+
+Route::post('upload-xls', 'Xls@upload');

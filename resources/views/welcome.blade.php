@@ -66,29 +66,21 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Test project for HSE & Rostelecom
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                @if (session('success'))
+                    <b>Success!</b>
+                @else
+                    <form action="/upload-xls" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <input type="file" name="xls-document" id="xls-document" type="text/xls" />
+                        <input type="submit" value="Upload and parse" />
+                    </form>
+                @endif
+
             </div>
         </div>
     </body>
